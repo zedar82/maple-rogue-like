@@ -7673,7 +7673,7 @@ public class Character extends AbstractCharacterObject {
                 }
 
                  // use this to fecth the macro's string and save it to use later
-                 try (PreparedStatement ps = con.prepareStatement("SELECT * FROM macro WHERE characterid = ?")){
+                 try (PreparedStatement ps = con.prepareStatement("SELECT * FROM macros WHERE characterid = ?")){
                     ps.setInt(1, charid);
 
                     try (ResultSet rs = ps.executeQuery()){
@@ -11634,7 +11634,7 @@ public class Character extends AbstractCharacterObject {
         macros[slot-1] = command;
         try (Connection con = DatabaseConnection.getConnection()) {
             // First try to update
-            try (PreparedStatement ps = con.prepareStatement("UPDATE macro SET skill" + slot + " = ? WHERE characterid = ?")) {
+            try (PreparedStatement ps = con.prepareStatement("UPDATE macros SET skill" + slot + " = ? WHERE characterid = ?")) {
                 ps.setString(1, command);
                 ps.setInt(2, getId());
                 int updatedRows = ps.executeUpdate();
@@ -11642,7 +11642,7 @@ public class Character extends AbstractCharacterObject {
                 // If no rows were updated, we need to insert a new row
                 if (updatedRows == 0) {
                     try (PreparedStatement insertPs = con.prepareStatement(
-                            "INSERT INTO macro (characterid, skill" + slot + ") VALUES (?, ?)")) {
+                            "INSERT INTO macros (characterid, skill" + slot + ") VALUES (?, ?)")) {
                         insertPs.setInt(1, getId());
                         insertPs.setString(2, command);
                         insertPs.executeUpdate();

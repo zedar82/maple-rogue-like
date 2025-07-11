@@ -21424,6 +21424,18 @@ CREATE TABLE IF NOT EXISTS `skillmacros` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+CREATE TABLE IF NOT EXISTS `macros` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `characterid` int(11) NOT NULL DEFAULT '0',
+  `skill1` varchar(255),
+  `skill2` varchar(255),
+  `skill3` varchar(255),
+  `skill4` varchar(255),
+  `skill5` varchar(255),
+
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 CREATE TABLE IF NOT EXISTS `skills` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `skillid` int(11) NOT NULL DEFAULT '0',
