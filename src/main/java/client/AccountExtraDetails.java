@@ -2,6 +2,7 @@ package client;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
+import java.util.ArrayList;
 
 public class AccountExtraDetails {
     private List<Achievement> achievements;
@@ -12,6 +13,9 @@ public class AccountExtraDetails {
 
     // Getters and setters
     public List<Achievement> getAchievements() {
+        if (achievements == null) {
+            achievements = new ArrayList<>();
+        }
         return achievements;
     }
 
@@ -20,6 +24,9 @@ public class AccountExtraDetails {
     }
 
     public List<String> getAscension() {
+        if (ascension == null) {
+            ascension = new ArrayList<>();
+        }
         return ascension;
     }
 
